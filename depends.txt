@@ -1,4 +1,5 @@
 Semio Dependencies:
 
-+ Python 3.4
-+ Microsoft Visual C++ Redistributable (possible)
+- Python 3.4
+    + py2exe for building application (install via "$ pip install py2exe")
+- Microsoft Visual C++ Redistributable (possible)
