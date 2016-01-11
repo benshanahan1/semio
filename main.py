@@ -376,9 +376,20 @@ class SymptomFrame(tk.Frame):
         des_label = ttk.Label(self.interior, text="Description", padding="5 0 0 0").grid(row=0, column=3, sticky=tk.W)
 
         # add widgets to canvas
+        old_category, color = None, None
+        color_counter = 0
+        colors = ["black", "dark violet"]  # options: http://wiki.tcl.tk/37701
         for i, b in enumerate(self.symptom_info):
             indices, category, symptom, lateralization, description = b  # unpack the tuple
             category = category.title()
+
+            if old_category != category:
+                # increment color choice
+                color = colors[color_counter]
+                color_counter += 1
+                if color_counter >= len(colors): color_counter = 0  # overflow back to 0
+
+            old_category = category
             lateralization = lateralization.lower()
             if description.lower() == g.Constants.NONE or description.lower() == g.Constants.UNDEFINED:
                 description = None
@@ -399,21 +410,21 @@ class SymptomFrame(tk.Frame):
                 self.optionmenus_vars[str(i)] = None
 
             # add category label
-            categorylabel = ttk.Label(self.interior, text=category, padding="0 0 5 0").grid(row=i+1, column=1, sticky=tk.W)
+            categorylabel = tk.Label(self.interior, text=category, fg=color).grid(row=i+1, column=1, sticky=tk.W)
 
             # add checkbutton
             var_selected = tk.IntVar()
             var_selected.set(0)  # default to all unselected
-            cb = ttk.Checkbutton(self.interior, text=symptom, variable=var_selected,
+            cb = tk.Checkbutton(self.interior, text=symptom, variable=var_selected, fg=color,
                                 command=(lambda var=str(i) : self.checkbutton_handler(var)))
-            cb.state(["!alternate"])  # remove initial black square inside ttk checkbutton
+            # cb.state(["!alternate"])  # remove initial black square inside ttk checkbutton
             cb.grid(row=i+1, column=2, sticky=tk.W)
             self.checkbuttons[str(i)] = cb
             self.checkbuttons_vars[str(i)] = var_selected
 
             # add description if applicable
             if description is not None:
-                descriptionlabel = ttk.Label(self.interior, text=description, padding="5 0 0 0").grid(row=i+1, column=3, sticky=tk.W)
+                descriptionlabel = tk.Label(self.interior, text=description, fg=color).grid(row=i+1, column=3, sticky=tk.W)
         
         # add vertical scrollbar to subframe and attach it to canvas
         self.vbar = ttk.Scrollbar(self.subframe, orient=tk.VERTICAL)
