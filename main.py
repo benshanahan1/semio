@@ -380,6 +380,8 @@ class SymptomFrame(tk.Frame):
         color_counter = 0
         colors = ["black", "dark violet"]  # options: http://wiki.tcl.tk/37701
         for i, b in enumerate(self.symptom_info):
+            # NOTE: the commented lines below were changed from ttk to tk to allow changing colors.
+
             indices, category, symptom, lateralization, description = b  # unpack the tuple
             category = category.title()
 
@@ -410,11 +412,13 @@ class SymptomFrame(tk.Frame):
                 self.optionmenus_vars[str(i)] = None
 
             # add category label
+            # categorylabel = ttk.Label(self.interior, text=category, padding="0 0 5 0").grid(row=i+1, column=1, sticky=tk.W)
             categorylabel = tk.Label(self.interior, text=category, fg=color).grid(row=i+1, column=1, sticky=tk.W)
 
             # add checkbutton
             var_selected = tk.IntVar()
             var_selected.set(0)  # default to all unselected
+            # cb = ttk.Checkbutton(self.interior, text=symptom, variable=var_selected,
             cb = tk.Checkbutton(self.interior, text=symptom, variable=var_selected, fg=color,
                                 command=(lambda var=str(i) : self.checkbutton_handler(var)))
             # cb.state(["!alternate"])  # remove initial black square inside ttk checkbutton
@@ -424,6 +428,7 @@ class SymptomFrame(tk.Frame):
 
             # add description if applicable
             if description is not None:
+                # descriptionlabel = ttk.Label(self.interior, text=description, padding="5 0 0 0").grid(row=i+1, column=3, sticky=tk.W)
                 descriptionlabel = tk.Label(self.interior, text=description, fg=color).grid(row=i+1, column=3, sticky=tk.W)
         
         # add vertical scrollbar to subframe and attach it to canvas

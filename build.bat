@@ -4,8 +4,8 @@
 python setup.py py2exe
 
 :: Copy license and readme into dist/.
-xcopy license.txt dist
-xcopy readme.txt dist
+xcopy license.md dist
+xcopy readme.md dist
 
 :: Copy Max's files over (the max/ and mesh/ directories).
 :: The "echo d" comes first so that xcopy knows we are copying a directory.
