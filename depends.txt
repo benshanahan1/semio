@@ -1,5 +1,9 @@
-Semio Dependencies:
+# Depends
+## General
+```
+Python 3.4
+MS Visual C++ Redistributable
+```
 
-- Python 3.4
-    + py2exe for building application (install via "$ pip install py2exe")
-- Microsoft Visual C++ Redistributable (possible)
+## Python Specific
+$ pip install py2exe
