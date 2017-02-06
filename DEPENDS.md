@@ -6,4 +6,6 @@ MS Visual C++ Redistributable
 ```
 
 ## Python Specific
+```
 $ pip install py2exe
+```
