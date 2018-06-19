@@ -19,8 +19,4 @@ symptoms and chosen to render the probabilities, a 3D representation of the brai
 rendered with the probabilities overlayed.
 
 ## First Run
-Unzip Semio.zip somewhere easily accessible on your computer. To run the application, double click on 
-the file titled "Semio.exe". Choose your symptoms and when ready, go to File > Export and Render. This
-will launch the 3D rendering application, which will prompt you to select the mesh directory. Browse to 
-the directory containing Semio.exe and select the directory named "mesh". Press continue, and the brain
-will be rendered with your selected symptoms overlayed.
+Unzip [Semio.rar](https://www.bshanahan.info/semio/distro/Semio.rar) somewhere easily accessible on your computer. To run the application, double click on the file titled "Semio.exe". Choose your symptoms and when ready, go to File > Export and Render. This will launch the 3D rendering application, which will prompt you to select the mesh directory. Browse to the directory containing Semio.exe and select the directory named "mesh". Press continue, and the brain will be rendered with your selected symptoms overlayed.
